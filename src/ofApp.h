@@ -27,13 +27,18 @@ class ofApp : public ofBaseApp{
 
 		//GUI
 		ofxUICanvas *gui;
-		ofxUIDropDownList *ddl_speed, *ddl_volume, *ddl_pan;
+		ofxUIDropDownList *ddl_speed, *ddl_volume, *ddl_pan, *ddl_joints_speed, *ddl_joints_volume, *ddl_joints_pan;
 		void setupGUI();
 		void exit(); 
 		void guiEvent(ofxUIEventArgs &e);
 
-		vector <string> controllers;
+		vector <string> controllers, joints;
 		int trackingReference_Speed, trackingReference_Volume, trackingReference_Pan;	// 0 - X-axis;	1 - Y-axis;	2 - Distance to marker;	3 - Distance to mouse
+		int joint_Speed, joint_Volume, joint_Pan;	//0 - Head, 1 - Neck, 2 - Shoulder L, 3 - Shoulder R, 4 - Elbow L, 5 - Elbow R, 6 - Hand L, 7 - Hand R, 8 - Torso,
+													//9 - Hip L, 10 - Hip R, 11 - Knee L, 12 - Knee R, 13 - Foot L, 14 - Foot R
+		bool showSkeleton;
+		void drawSkeleton();
+		ofPoint dest_speed, dest_volume, dest_panning;
 
 
 		//Kinect
